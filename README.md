@@ -21,4 +21,4 @@
 
 ## ScreenShot : 
 
-![Alt text](.leaderboard/src/assets/ss.jpg/?raw=true "Leaderboard-UI")
+![Screenshot](https://github.com/mukulramchandani/leaderboard-ui/blob/main/leaderboard/src/assets/ss.JPG/?raw=false "Leaderboard-UI")
