@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+@import url('https://db.onlinewebfonts.com/c/044ff3aa766061f99fbbd171fb682d8c?family=Game+Over');
+
+body{
+  background: url(./assets/bodybg.jpg);
+}
+.root{
+
+
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  font-size: 35px !important;
+  font-family: 'GameOver','Monoton', cursive;
+  width: 400px;
+    margin: 13px auto;
+    color: wheat;
+    font-weight: 700;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ribbon {
+  font-size: 35px !important;
+  font-family: 'Monoton', cursive;
+  /* This ribbon is based on a 16px font side and a 24px vertical rhythm. I've used em's to position each element for scalability. If you want to use a different font size you may have to play with the position of the ribbon elements */
+ 
+  width: 30%;
+     
+  position: relative;
+  background: #ba89b6;
+  color: rgb(37, 18, 18);
+  text-align: center;
+  padding: .4em; /* Adjust to suit */
+  /*margin: 2em auto 3em;  Based on 24px vertical rhythm. 48px bottom margin - normally 24 but the ribbon 'graphics' take up 24px themselves so we double it. */
+ }
+ .ribbon:before, .ribbon:after {
+  content: "";
+  position: absolute;
+  display: block;
+  bottom: -1em;
+  border: 1.5em solid #986794;
+  z-index: -1;
+ }
+ .ribbon:before {
+  left: -2em;
+  border-right-width: 1.5em;
+  border-left-color: transparent;
+ }
+ .ribbon:after {
+  right: -2em;
+  border-left-width: 1.5em;
+  border-right-color: transparent;
+ }
+ .ribbon .ribbon-content:before, .ribbon .ribbon-content:after {
+  content: "";
+  position: absolute;
+  display: block;
+  border-style: solid;
+  border-color: #804f7c transparent transparent transparent;
+  bottom: -1em;
+ }
+ .ribbon .ribbon-content:before {
+  left: 0;
+  border-width: 1em 0 0 1em;
+ }
+ .ribbon .ribbon-content:after {
+  right: 0;
+  border-width: 1em 1em 0 0;
+ }
+.leaderboard{
+  height: 563px;
+  overflow: scroll;
+}
+ .leaderboardMain {
+   background: url("./assets/m3.jpg");
+   background-size: 1000px 563px;
+   background-repeat: no-repeat;
+   width: 1000px;
+   height: 563px;
+   position: relative;
+ }
+
+.main{
+  max-width: 1000px;
+  width: 90vw;
+  height: 563px;
+  display: flex;
+  justify-content: center;
+  margin: 10px auto;
+  border: 6.5px solid wheat;
+}
+.leaderboard::-webkit-scrollbar {
+  display: none;
+}
+
+.route{
+  position: absolute;
+  opacity: 0.65;
+}
+.userPin{
+  position: absolute;
+  offset-path: path('M 68 516 L 286 490 C 354 410 321 504 490 532 C 608 373 676 569 931 503 C 845 404 900 342 967 333 C 777 195 827 342 612 246 C 810 257 621 164 767 174 L 698 122');
+    height: 35px;
+    z-index: 9999;
+    top: -20px;
+    offset-rotate: 2deg;
+}
+@keyframes climbing {
+  100% {
+    offset-distance: 100% ;
+  }
+}
+
+hr.level1 {
+  border: none;
+  border-top: 3.5px dashed rgb(255 255 255);
+  opacity: .4;
+  position: absolute;
+  width: 10%;
+  bottom: 75px;
+}
+hr.level2 {
+  border: none;
+  border-top: 3.5px dashed rgb(255 255 255);
+  opacity: .4;
+  position: absolute;
+  width: 10%;
+  bottom: 150px;
+}
+hr.level3 {
+  border: none;
+  border-top: 3.5px dashed rgb(255 255 255);
+  opacity: .4;
+  position: absolute;
+  width: 10%;
+  bottom: 225px;
+}
+hr.level4 {
+  border: none;
+  border-top: 3.5px dashed rgb(255 255 255);
+  opacity: .4;
+  position: absolute;
+  width: 10%;
+  bottom: 300px;
+}
+hr.level5 {
+  border: none;
+  border-top: 3.5px dashed rgb(255 255 255);
+  opacity: .4;
+  position: absolute;
+  width: 10%;
+  bottom: 375px;
+}
+hr.level6 {
+  border: none;
+  border-top: 3.5px dashed rgb(255 255 255);
+  opacity: .4;
+  position: absolute;
+  width: 10%;
+  bottom: 450px;
+}
+
+.level1text{
+  position: absolute;
+  bottom: 85px;  
+  color: navajowhite;
+  font-weight: 500;
+    left: 5px;
+}
+
+.level2text{
+  position: absolute;
+  bottom: 160px;  
+  color: navajowhite;
+  font-weight: 500;
+    left: 5px;
+
+}
+.level3text{
+  position: absolute;
+  bottom: 235px;  
+  color: navajowhite;
+  font-weight: 500;
+    left: 5px;
+
+}
+.level4text{
+  position: absolute;
+  bottom: 310px; 
+  color: navajowhite;
+  font-weight: 500;
+    left: 5px;
+ 
+}
+.level5text{
+  position: absolute;
+  bottom: 385px;  
+  color: #363538;
+  font-weight: 500;
+  left: 5px;
+}
+.level6text{
+  position: absolute;
+  bottom: 460px;  
+  color: #363538;
+  font-weight: 500;
+    left: 5px;
+}
+.userToolTip{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+.tippy-content{
+  background: repeating-linear-gradient(
+45deg
+, #975d5d, transparent 100px);
+    border-radius: 20px;
+    border:2px solid;
+}
+.tippy-box{
+  border-radius: 20px !important;
+}
+.tippy-arrow{
+  color: #5b3f3f;
+}
+
+.summary{
+  font-family: 'GameOver','Monoton', cursive;
+  display: flex;
+  justify-content: space-evenly;
+  color: wheat;
+    font-size: 30px;
+    margin-top: -38px;
+    text-decoration: overline;
+}
+
