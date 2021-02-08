@@ -14,7 +14,9 @@ function App() {
   const [visible, setVisible] = useState(false);
 
 
-  const [maxScore, setMaxScore] = useState(19800);
+  const [maxScore, setMaxScore] = useState(null);
+
+  const [levelsArray,setLevelsArray] = useState([]);
 
   useEffect(() => {
     getData().then(() => {
@@ -28,7 +30,7 @@ function App() {
   }, []);
   useEffect(() => {
     let usersRenderData = [];
-    if (users) {
+    if (users && maxScore) {
       console.log(users);
       let styleSheet = document.styleSheets[0];
       let u = users.data;
@@ -51,40 +53,60 @@ function App() {
       setUsersRenderInfo(usersRenderData);
 
     }
-  }, [users]);
+    console.log("maxScore/users changed");
+  }, [users,maxScore]);
 
   const getData = async () => {
+    const levelsInfo = await (await fetch('http://localhost:8080/api/get-levels-info')).json();
+    let levels = [];
+    const maxScore = levelsInfo.data[levelsInfo.data.length-1].maxScore;
+    for(let i=1;i<=6;i++){
+      let levelValue = (maxScore/6)*i;
+      levels.push(levelValue);
+    }
+    setMaxScore(levelsInfo.data[levelsInfo.data.length-1].maxScore);
     const usersData = await (await fetch('http://localhost:8080/api/get-users')).json();
     setUsers(usersData);
-    console.log(usersData);
+    setLevelsArray(levels);
+    //console.log(levelsInfo);
+    //console.log(usersData);
   }
 
   return (
     <div className="root">
-      {/* <div className="App-header">
-        <h1 className="ribbon">
-          <span className="ribbon-content">GAME SUMMARY</span>
-        </h1>
-      </div> */}
+
       <div  className="App-header">
         GAME&nbsp;&nbsp; SUMMARY
       </div>
       <div className="main">
         <div className="leaderboard">
           <div className="leaderboardMain">
-            <strong className="level1text">3300 ft.</strong>
+
+            {
+              levelsArray.length && levelsArray.map((e,i)=>{
+                let className = `level${i+1}text`;
+                let levelValue = `${e} ft.`
+                return(
+                  <>
+                  <strong key={i*2} className={className}>{levelValue}</strong>
+                  <hr key={""+i+i} className={`level${i+1}`} />
+                  </>
+                )
+              })
+            }
+            {/* <strong className="level1text">3300 ft.</strong>
             <strong className="level2text">6600 ft.</strong>
             <strong className="level3text">9900 ft.</strong>
             <strong className="level4text">13200 ft.</strong>
             <strong className="level5text">16500 ft.</strong>
-            <strong className="level6text">19800 ft.</strong>
+            <strong className="level6text">19800 ft.</strong> */}
 
-            <hr className="level1" />
+            {/* <hr className="level1" />
             <hr className="level2" />
             <hr className="level3" />
             <hr className="level4" />
             <hr className="level5" />
-            <hr className="level6" />
+            <hr className="level6" /> */}
 
             <svg className="route" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 563">
               <defs>
