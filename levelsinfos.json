@@ -1,0 +1,2 @@
+{"_id":{"$oid":"602101ad0518740d00bef746"},"maxScore":{"$numberInt":"19800"},"levels":{"$numberInt":"6"},"medalsInfo":{"1":"Gold","2":"Silver","3":"Bronze"},"remark":"Rising","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"60210afb0518740d00bef747"},"maxScore":{"$numberInt":"18000"},"levels":{"$numberInt":"6"},"medalsInfo":{"1":"Gold","2":"Silver","3":"Bronze"},"remark":"Rising","__v":{"$numberInt":"0"}}

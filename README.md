@@ -22,3 +22,6 @@
 ## ScreenShot : 
 
 ![Screenshot](https://github.com/mukulramchandani/leaderboard-ui/blob/main/leaderboard/src/assets/ss.JPG/?raw=false "Leaderboard-UI")
+
+#### Notes :
+- You can import collections (levelsinfos,users) in mongo with database name 'test' using the JSON files available in the repo.
