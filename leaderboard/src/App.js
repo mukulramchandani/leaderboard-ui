@@ -6,6 +6,12 @@ import 'tippy.js/dist/tippy.css';
 
 function App() {
 
+  const medalsInfo = {
+    '1':"Gold",
+    '2':"Silver",
+    '3':"Bronze"
+  }
+
   const loggedInUser = "mukul.r@example.com";
   const [users, setUsers] = useState(null);
 
@@ -18,6 +24,12 @@ function App() {
 
   const [levelsArray,setLevelsArray] = useState([]);
 
+  const [userScore,setUserScore] = useState(null);
+
+  const [medalId,setMedalId] = useState(null);
+
+
+
   useEffect(() => {
     getData().then(() => {
       console.log("Data Fetched");
@@ -28,6 +40,7 @@ function App() {
     },5000);
 
   }, []);
+
   useEffect(() => {
     let usersRenderData = [];
     if (users && maxScore) {
@@ -43,18 +56,43 @@ function App() {
       }`;
 
         styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
-        console.log(styleSheet);
+       // console.log(styleSheet);
         element["animationName"] = animationName;
         let userData = element;
         usersRenderData.push(userData);
+
+        if(element.email === loggedInUser){
+          console.log('user found')
+          setUserScore(element.score);
+          setMedalId(element.medalId);
+        }
       });
       console.log(usersRenderData);
 
       setUsersRenderInfo(usersRenderData);
 
+
     }
     console.log("maxScore/users changed");
   }, [users,maxScore]);
+
+  const getUserLevelInfo = () => {
+    let level = '';
+    console.log(userScore);
+    if(levelsArray && userScore){
+      levelsArray.forEach((e,i)=>{
+        if(i===0 && userScore <= e){
+          level =  "Level 1";
+        }else if(i !== 5 && userScore <= e && userScore > levelsArray[i-1] ){
+          level =  `Level ${i+1}`;
+        }else if( i===5 && userScore > levelsArray[4]){
+          level = "Level 6";
+        }
+      })
+    }
+    console.log(level,'level');
+    return level;
+  }
 
   const getData = async () => {
     const levelsInfo = await (await fetch('http://localhost:8080/api/get-levels-info')).json();
@@ -160,8 +198,8 @@ function App() {
         </div>
       </div>
       <div className="summary">
-            <h4>Level 4</h4>
-            <h4>Bronze</h4>
+            { levelsArray.length && maxScore && userScore && <h4>{getUserLevelInfo()}</h4>}
+            {medalId && <h4>{medalsInfo[medalId]}</h4>}
             <h4>Rising</h4>
       </div>
     </div>
